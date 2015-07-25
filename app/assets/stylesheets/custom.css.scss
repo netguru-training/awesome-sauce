@@ -1,0 +1,18 @@
+.star_rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 20px;
+}
+.star_rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.star_rating > span:hover:before,
+.star_rating > span:hover ~ span:before,
+.star_rating.enabled > span.selected:before,
+.star_rating.enabled > span.selected ~ span:before {
+   content: "\2605";
+   cursor: pointer;
+   position: absolute;
+}

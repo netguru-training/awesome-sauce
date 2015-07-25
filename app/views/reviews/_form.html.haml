@@ -1,0 +1,19 @@
+= simple_form_for review do |f|
+  - if review.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
+      %ul
+        - review.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+  .form-group
+    = f.label :Rating
+    = f.input :rating, as: :hidden, input_html: { id: 'hidden-rating' }
+  = f.hidden_field :user_id, value: User.first.id
+  = f.submit 'Save', class: 'btn btn-success pull-right'
+
+.star_rating.enabled.text-left
+  - 5.downto(1) do |i|
+    = render partial: 'star', locals: { value: i, selected: i == review.rating ? true : false }
