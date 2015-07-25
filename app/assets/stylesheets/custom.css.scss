@@ -12,7 +12,7 @@
 .star_rating > span:hover ~ span:before,
 .star_rating.enabled > span.selected:before,
 .star_rating.enabled > span.selected ~ span:before {
-   content: "\2605";
-   cursor: pointer;
-   position: absolute;
+  content: "\2605";
+  cursor: pointer;
+  position: absolute;
 }

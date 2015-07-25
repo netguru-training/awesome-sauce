@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-
   expose(:review, attributes: :review_params)
-
+  
   def create
     review.author = current_user
     if review.save
@@ -24,6 +23,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:content, :rating, :user_id)
   end
