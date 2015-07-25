@@ -2,10 +2,14 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  validates :name, presence: true
-
+  has_many :rides, through: :rides_passengers
+  has_many :rides_passengers, foreign_key: 'passenger_id'
+  belongs_to :ride
   has_many :reviews_given, class_name: "Review", :foreign_key => "author_id"
   has_many :reviews_received, class_name: "Review", :foreign_key => "user_id"
+
+  validates :name, presence: true
+
 
   def average_rating
     if reviews_received.any?

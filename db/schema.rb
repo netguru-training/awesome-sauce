@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20150725121859) do
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
+  create_table "rides", force: :cascade do |t|
+    t.string   "from"
+    t.string   "to"
+    t.integer  "driver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rides_passengers", force: :cascade do |t|
+    t.integer  "passenger_id"
+    t.integer  "ride_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -43,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150725121859) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role"
+    t.integer  "ride_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
