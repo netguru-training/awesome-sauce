@@ -1,12 +1,12 @@
 %table.table
   %tr
     %th User name
-    %th rating
     %th content
+    %th rating
     %th date
   - reviews_given.each do |review|
     %tr
       %td= review.user.name
-      %td= review.rating
       %td= review.content
-      %td= review.created_at
+      %td= review.rating
+      %td= review.created_at.to_formatted_s(:short)
