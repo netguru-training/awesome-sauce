@@ -9,6 +9,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
+gem 'paperclip', '~> 4.1'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

@@ -1,10 +1,7 @@
-%h3 User
-%p
-  Name:
-  =@user.name if @user.name
-%p
-  Email:
-  =@user.email if @user.email
+%h3
+  .round-image-50.pull-left= image_tag(current_user.avatar.url(:medium))
+  %p= @user.name
+  %p.small= @user.email
 %p
   Average rating:
   =@user.average_rating
