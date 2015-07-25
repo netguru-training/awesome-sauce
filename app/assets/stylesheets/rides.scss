@@ -1,0 +1,13 @@
+.ride {
+  border-top: 1px solid black;
+
+  &:last-child {
+    border-bottom: 1px solid black;
+  }
+}
+
+.rides-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}

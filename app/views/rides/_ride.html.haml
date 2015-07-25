@@ -1,0 +1,18 @@
+.ride
+  .ride-link
+    = link_to 'Details', ride_path(ride.id)
+  .ride-to
+    To:
+    = ride.to
+  .ride-from
+    From:
+    = ride.from
+  .ride-places
+    Free places:
+    = ride.free_rides_count
+  .ride-start-date
+    Start date:
+    = ride.start_date
+  .ride-driver
+    Driver:
+    = link_to ride.driver.email, user_path(ride.driver.id)

@@ -6,5 +6,5 @@ class RidesPassenger < ActiveRecord::Base
   validates :ride,      presence: true
   validates :status,    presence: true
 
-  enum status: [ :free, :taken ]
+  enum status: { accepted: 2, pending: 1, free: 0, rejected: -1 }
 end

@@ -10,6 +10,6 @@ class Ride < ActiveRecord::Base
   validates :driver_id,  presence: true
 
   def free_rides_count
-    rides_passengers.where.not(status: :taken)
+    places - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
 end
