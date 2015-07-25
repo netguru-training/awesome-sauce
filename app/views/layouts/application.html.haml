@@ -10,6 +10,24 @@
   %body
     %header
       = render 'layouts/navigation'
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          = link_to "BlaBlaPlus", root_path, class: "navbar-brand"
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if current_user
+              %li
+                %p.navbar-text
+                  = 'Hi '
+                  = link_to current_user.name, current_user
+              %li
+                = link_to 'Sign out', destroy_user_session_path, :method => :delete
+            - else
+              %li
+                = link_to 'Sign in', new_user_session_path
+              %li
+                = link_to 'Register', new_user_registration_path
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
