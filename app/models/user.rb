@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  has_many :rides, through: :rides_passengers
+  has_many :rides_as_passenger, class_name: 'Ride', through: :rides_passengers,
+            source: 'ride'
+  has_many :rides_as_driver, class_name: 'Ride', foreign_key: 'driver_id'
   has_many :rides_passengers, foreign_key: 'passenger_id'
   belongs_to :ride
   has_many :reviews_given, class_name: "Review", :foreign_key => "author_id"
