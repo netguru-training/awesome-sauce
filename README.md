@@ -1,5 +1,6 @@
 Template App
 ================
+[![Build Status](https://travis-ci.org/netguru-training/awesome-sauce.svg?branch=master)](https://travis-ci.org/netguru-training/awesome-sauce)
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
