@@ -13,6 +13,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    if review.save
+      flash[:notice] = "Review updated."
+      ## redirect_to sciezka usera.....
+      redirect_to root_path
+    else
+      render action: 'edit'
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:content, :rating, :user_id)
