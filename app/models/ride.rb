@@ -12,4 +12,8 @@ class Ride < ActiveRecord::Base
   def free_rides_count
     places - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
+
+  def author?(current_user)
+    current_user == driver
+  end
 end

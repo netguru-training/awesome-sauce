@@ -15,3 +15,8 @@
 .ride-driver
   Driver:
   = link_to ride.driver.email, user_path(ride.driver.id)
+- if ride.author?(current_user)
+  .ride-options
+    = link_to 'Edit', edit_ride_path(ride.driver.id)
+  .ride-options
+    = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
