@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-
   def average_rating
     if reviews_received.any?
       reviews_received.average(:rating).round(2)
