@@ -1,0 +1,10 @@
+%table.table
+  %tr
+    %th From
+    %th To
+    %th date
+  - rides.each do |ride|
+    %tr
+      %td= ride.from
+      %td= ride.to
+      %td= ride.start_date.to_formatted_s(:short)

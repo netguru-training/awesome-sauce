@@ -1,0 +1,12 @@
+%table.table
+  %tr
+    %th Author name
+    %th rating
+    %th content
+    %th date
+  - reviews_received.each do |review|
+    %tr
+      %td= review.author.name
+      %td= review.rating
+      %td= review.content
+      %td= review.created_at
