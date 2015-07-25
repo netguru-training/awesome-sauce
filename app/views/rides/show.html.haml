@@ -20,3 +20,5 @@
     = link_to 'Edit', edit_ride_path(ride.driver.id)
   .ride-options
     = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
+- if !ride.author?(current_user) && ride.free_rides?
+  = link_to 'Edit', edit_ride_path(ride.driver.id)

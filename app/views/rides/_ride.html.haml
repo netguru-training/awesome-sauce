@@ -21,3 +21,5 @@
       = link_to 'Edit', edit_ride_path(ride.driver.id)
     .ride-options
       = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
+- if current_user == ride.driver
+  = link_to 'Display requests', ride_requests_path(ride)

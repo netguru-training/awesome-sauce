@@ -1,0 +1,9 @@
+.request
+  .request-status
+    = rides_passenger.status
+  .request-email
+    = rides_passenger.passenger.email
+  .request-options
+  - if rides_passenger.pending?
+    = link_to 'Accept', ride_request_path(id: rides_passenger.id, type: 'accept'), method: :patch
+    = link_to 'Denied', ride_request_path(id: rides_passenger.id, type: 'deny'), method: :patch

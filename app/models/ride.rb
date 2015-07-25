@@ -16,4 +16,12 @@ class Ride < ActiveRecord::Base
   def author?(current_user)
     current_user == driver
   end
+
+  def free_rides?
+    self.free_rides_count > 0
+  end
+
+  def requested?(current_user)
+    !!rides_passengers.find_by(passenger_id: current_user.id)
+  end
 end
