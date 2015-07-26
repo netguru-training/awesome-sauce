@@ -1,6 +1,6 @@
 = simple_form_for ride do |f|
-  = f.input :from, placeholder: 'Ride form'
-  = f.input :to, placeholder: 'Ride to'
-  = f.input :places, placeholder: 'Ride places'
+  = f.input :start_city, placeholder: 'Ride form'
+  = f.input :destination_city, placeholder: 'Ride to'
+  = f.input :seats, placeholder: 'Ride places'
   = f.input :start_date, as: :date, order: [ :day, :month, :year]
   = f.button :submit

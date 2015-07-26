@@ -2,4 +2,4 @@
   .requests-title
     Rides passengers
   - rides_passengers.each do |rides_passenger|
-    = render partial: 'requests/request', locals: {request: rides_passenger}
+    = render 'requests/request', request: rides_passenger

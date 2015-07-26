@@ -1,4 +1,7 @@
 .rides
   .rides-title
     Rides
-  = render rides
+  - other_rides.each do |other_ride|
+    = render 'rides/ride', ride: other_ride
+- if current_user.present?
+  = link_to 'New ride', new_ride_path

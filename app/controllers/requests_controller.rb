@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :index]
-  before_action :authenticate_author!, only: [:create, :update, :index]
+  before_action :authenticate_driver!, only: [:update, :index]
+  before_action :authenticate_passenger!, only: [:create]
   expose(:rides_passenger)
   expose(:rides_passengers) { RidesPassenger.where(ride_id: params[:ride_id]) }
   expose(:ride)
@@ -33,9 +34,15 @@ class RequestsController < ApplicationController
 
   private
 
-  def authenticate_author!
+  def authenticate_driver!
     return if ride.author?(current_user)
     flash[:error] = "You can display only requests from your rides."
+    redirect_to ride_path(ride.id)
+  end
+
+  def authenticate_passenger!
+    return if !ride.author?(current_user)
+    flash[:error] = "You can request only other users rides."
     redirect_to ride_path(ride.id)
   end
 end

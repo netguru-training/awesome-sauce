@@ -1,25 +1,29 @@
 .ride
-  .ride-link
-    = link_to 'Details', ride_path(ride.id)
-  .ride-to
-    To:
-    = ride.to
-  .ride-from
-    From:
-    = ride.from
-  .ride-places
-    Free places:
-    = ride.free_rides_count
-  .ride-start-date
-    Start date:
-    = ride.start_date
-  .ride-driver
+  .ride__description
+    .ride__description-link
+      = link_to 'Details', ride_path(ride.id)
+    .ride__description-to
+      To:
+      = ride.destination_city
+    .ride__description-from
+      From:
+      = ride.start_city
+    .ride__description-seats
+      Free seats:
+      = ride.free_rides_count
+    .ride__description-start-date
+      Start date:
+      = ride.start_date
+    .ride__options
+      - if ride.author?(current_user)
+        = link_to 'Edit', edit_ride_path(ride.driver.id)
+        |
+        = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
+  .ride__driver
     Driver:
     = link_to ride.driver.email, user_path(ride.driver.id)
-  - if ride.author?(current_user)
-    .ride-options
-      = link_to 'Edit', edit_ride_path(ride.driver.id)
-    .ride-options
-      = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
-- if current_user == ride.driver
-  = link_to 'Display requests', ride_requests_path(ride)
+    .ride__options-requests
+      - if ride.author?(current_user)
+        = link_to 'Display requests', ride_requests_path(ride)
+      - if request_ride_allowed?(ride)
+        = link_to 'Request a ride', ride_requests_path(ride), method: :post

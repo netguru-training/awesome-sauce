@@ -3,21 +3,23 @@ class Ride < ActiveRecord::Base
   has_many :passengers, class_name: 'User', through: :rides_passengers
   has_many :rides_passengers
 
-  validates :from,       presence: true
-  validates :to,         presence: true
-  validates :places,     presence: true
-  validates :start_date, presence: true
-  validates :driver_id,  presence: true
+  validates :start_city,       presence: true
+  validates :destination_city, presence: true
+  validates :seats,            presence: true
+  validates :start_date,       presence: true
+  validates :driver_id,        presence: true
+
+  scope :other_users_rides, ->(current_user) { where.not(driver_id: current_user.id) if current_user.present? }
 
   scope :completed, -> { where("start_date <= ?", Time.now) }
   scope :upcoming, -> { where("start_date > ?", Time.now) }
 
   def free_rides_count
-    places - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
+    seats - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
 
   def author?(current_user)
-    current_user == driver
+    current_user.present? ? current_user == driver : false
   end
 
   def free_rides?
@@ -25,6 +27,6 @@ class Ride < ActiveRecord::Base
   end
 
   def requested?(current_user)
-    !!rides_passengers.find_by(passenger_id: current_user.id)
+    !!rides_passengers.find_by(passenger_id: current_user.id) if current_user.present?
   end
 end
