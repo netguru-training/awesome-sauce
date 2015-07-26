@@ -3,7 +3,7 @@ class RidesController < ApplicationController
   before_action :authenticate_author!, only: [:edit, :update, :destroy]
   expose(:ride, attributes: :ride_params)
   expose(:rides)
-  expose(:other_rides) { Ride.other_users_rides(current_user) }
+  expose_decorated(:other_rides, decorator: RideDecorator) { Ride.other_users_rides(current_user) }
 
   def create
     ride.driver = current_user
