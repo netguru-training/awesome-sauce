@@ -29,5 +29,4 @@ class Ride < ActiveRecord::Base
   def requested?(current_user)
     !!rides_passengers.find_by(passenger_id: current_user.id) if current_user.present?
   end
-
 end
