@@ -9,8 +9,8 @@
 .row
   .col-md-6
     .panel.panel-default
-      .panel-heading Last rides as driver
-      =render partial: 'users/rides', locals: {rides: user.rides_as_driver}
+      .panel-heading Upcoming rides as driver
+      =render partial: 'users/rides', locals: {rides: user.rides_as_driver.upcoming}
   .col-md-6
     .panel.panel-default
       .panel-heading Last rides as passenger

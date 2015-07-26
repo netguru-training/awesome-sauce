@@ -19,6 +19,7 @@ class Ride < ActiveRecord::Base
   scope :destination_city, ->(query) { where("destination_city ilike ?", "%#{query}%") }
 
   scope :with_accepted_requests, -> { where(rides_passengers: { status: RidesPassenger.statuses[:accepted]}) }
+
   def free_rides_count
     seats - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
@@ -33,5 +34,9 @@ class Ride < ActiveRecord::Base
 
   def requested?(current_user)
     rides_passengers.find_by(passenger_id: current_user.id).present? if current_user.present?
+  end
+
+  def accepted_requests
+      rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
 end

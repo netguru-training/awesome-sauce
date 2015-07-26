@@ -3,9 +3,11 @@
     %th From
     %th To
     %th Date
+    %th Seats taken
   - rides.each do |ride|
     %tr
       %td
         = link_to ride.start_city, ride_path(ride)
       %td= ride.destination_city
       %td= ride.start_date.to_formatted_s(:short)
+      %td= "#{ride.accepted_requests}/#{ride.seats}"
