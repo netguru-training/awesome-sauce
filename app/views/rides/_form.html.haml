@@ -10,13 +10,6 @@
         = f.input :destination_city_lat, :as => :hidden, input_html: { data: { geo: 'lat'} }
         = f.input :destination_city_lng, :as => :hidden, input_html: { data: { geo: 'lng'} }
       = f.input :seats, placeholder: 'Ride places'
-      -#= f.input :start_date, as: :date, order: [ :day, :month, :year]
-      .well
-        #datetimepicker1.input-append.date
-          %input{'data-format': 'dd/MM/yyyy hh:mm:ss', type: :text}
-          %span.add-on
-            %i{'data-time-icon': 'icon-time', 'data-date-icon': 'icon-calendar'}
-        -#= f.input :start_date
-      -#= f.input :start_date, as: :text,
+      = f.input :start_date, as: :date, order: [ :day, :month, :year]
       = f.input :price
       = f.button :submit
