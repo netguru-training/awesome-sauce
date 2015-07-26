@@ -1,26 +1,26 @@
 %h3
   .round-image-50.pull-left= image_tag(current_user.avatar.url(:medium))
-  %p= @user.name
-  %p.small= @user.email
+  %p= user.name
+  %p.small= user.email
 %p
   Average rating:
-  =@user.average_rating
+  =user.average_rating
 
 .row
   .col-md-6
     .panel.panel-default
       .panel-heading Last rides as driver
-      =render partial: 'users/rides', locals: {rides: @user.rides_as_driver}
+      =render partial: 'users/rides', locals: {rides: user.rides_as_driver}
   .col-md-6
     .panel.panel-default
       .panel-heading Last rides as passenger
-      =render partial: 'users/rides', locals: {rides: @user.rides_as_passenger}
+      =render partial: 'users/rides', locals: {rides: user.rides_as_passenger}
 .row
   .col-md-6
     .panel.panel-default
       .panel-heading Last received reviews
-      = render partial: 'users/reviews_received', locals: { reviews_received: @user.reviews_received }
+      = render partial: 'users/reviews_received', locals: { reviews_received: user.reviews_received }
   .col-md-6
     .panel.panel-default
       .panel-heading Last given reviews
-      = render partial: 'users/reviews_given', locals: {reviews_given: @user.reviews_given}
+      = render partial: 'users/reviews_given', locals: {reviews_given: user.reviews_given}
