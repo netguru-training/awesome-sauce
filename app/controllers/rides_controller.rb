@@ -40,7 +40,9 @@ class RidesController < ApplicationController
 
   def ride_params
     params.require(:ride)
-      .permit(:start_city, :destination_city, :driver_id, :seats, :start_date, :price)
+      .permit(:start_city, :destination_city, :driver_id, :seats,
+        :start_date, :price, :destination_city_lat, :destination_city_lng,
+        :start_city_lat, :start_city_lng)
   end
 
   def authenticate_author!

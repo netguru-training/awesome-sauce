@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150726105756) do
+ActiveRecord::Schema.define(version: 20150726111957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,15 @@ ActiveRecord::Schema.define(version: 20150726105756) do
     t.string   "start_city"
     t.string   "destination_city"
     t.integer  "driver_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "seats"
     t.datetime "start_date"
     t.decimal  "price"
+    t.string   "destination_city_lat"
+    t.string   "destination_city_lng"
+    t.string   "start_city_lat"
+    t.string   "start_city_lng"
   end
 
   create_table "rides_passengers", force: :cascade do |t|

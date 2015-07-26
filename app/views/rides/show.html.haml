@@ -37,6 +37,11 @@
           ( time to ride:
           = timeago_tag ride.start_date, nojs: true
           )
+    %h2
+      Route
+      %strong#km
+    #gmap-route{style: 'height: 500px; width: 500px'}
+
     .ride__options
       - if ride.author?(current_user)
         = link_to 'Edit', edit_ride_path(ride.driver.id)
@@ -60,3 +65,13 @@
         Average rating:
       .ride__driver-field--value
         = ride.driver.average_rating
+
+.ride__hidden
+  .ride__hidden-destination_city_lat
+    = ride.destination_city_lat
+  .ride__hidden-destination_city_lng
+    = ride.destination_city_lng
+  .ride__hidden-start_city_lat
+    = ride.start_city_lat
+  .ride__hidden-start_city_lng
+    = ride.start_city_lng

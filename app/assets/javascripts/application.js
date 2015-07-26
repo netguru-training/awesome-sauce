@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require jquery-geocomplete
 //= require jquery.timeago
+//= require maplace
 //= require reviews
 //= require_tree .
