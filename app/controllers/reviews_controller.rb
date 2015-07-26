@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   expose(:review, attributes: :review_params)
-  
+
   def create
     review.author = current_user
     if review.save
