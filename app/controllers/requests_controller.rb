@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     rides_passengers = RidesPassenger.new(
       ride_id: params[:ride_id],
       passenger: current_user,
-      status: status: RidesPassenger.statuses[:pending]
+      status: RidesPassenger.statuses[:pending]
     )
     if rides_passengers.save
       flash[:notice] = "Ride requested"
