@@ -1,0 +1,31 @@
+.ride {
+  border-top: 1px solid $black;
+  padding: 8px 0;
+
+
+  &:last-child {
+    border-bottom: 1px solid $black;
+  }
+}
+
+.rides__title {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 16px 0;
+}
+
+.ride__description {
+  display: inline-block;
+}
+
+.ride__driver {
+  display: inline-block;
+  float: right;
+}
+
+.ride__driver-image {
+  img {
+    margin: 5px;
+    height: 50px;
+  }
+}
