@@ -26,7 +26,8 @@
         = link_to 'Request a ride', ride_requests_path(ride), method: :post
   .ride__driver
     .ride__driver-image
-      = image_tag(current_user.avatar.url(:thumb))
+      - if signed_in?
+        = image_tag(current_user.avatar.url(:thumb))
     .ride__driver-description
       %div
         Email:

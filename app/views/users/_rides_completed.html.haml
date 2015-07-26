@@ -1,0 +1,16 @@
+%table.table
+  %tr
+    %th From
+    %th To
+    %th Date
+    %th Review driver
+  %tr
+    - rides.each do |ride|
+      %td= link_to ride.start_city, ride_path(ride)
+      %td= ride.destination_city
+      %td= ride.start_date.to_formatted_s(:short)
+      - if ride.driver.decorate.reviewable_by?(current_user)
+        - if ride.driver.decorate.reviewed_by?(current_user)
+          %td= link_to "Update review about this driver!", edit_review_path
+        - else
+          %td= link_to "Add review about this driver!", new_review_path

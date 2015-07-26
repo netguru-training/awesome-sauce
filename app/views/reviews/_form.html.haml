@@ -11,7 +11,7 @@
   .form-group
     = f.label :Rating
     = f.input :rating, as: :hidden, input_html: { id: 'hidden-rating' }
-  = f.hidden_field :user_id, value: User.first.id
+  = f.hidden_field :user_id, value: params[:user_id]
   = f.submit 'Save', class: 'btn btn-success pull-right'
 
 .star_rating.enabled.text-left

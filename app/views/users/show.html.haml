@@ -14,7 +14,7 @@
   .col-md-6
     .panel.panel-default
       .panel-heading Last rides as passenger
-      =render partial: 'users/rides', locals: {rides: user.rides_as_passenger}
+      =render partial: 'users/rides_completed', locals: {rides: user.completed_rides_as_passenger}
 .row
   .col-md-6
     .panel.panel-default
