@@ -8,6 +8,7 @@ class Ride < ActiveRecord::Base
   validates :seats,            presence: true
   validates :start_date,       presence: true
   validates :driver_id,        presence: true
+  validates :price,            presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0 }
 
   scope :other_users_rides, ->(current_user) { where.not(driver_id: current_user.id) if current_user.present? }
 
