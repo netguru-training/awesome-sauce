@@ -1,6 +1,8 @@
 BlaBla Plus
 ================
 
+[![Build Status](https://travis-ci.org/netguru-training/awesome-sauce.svg?branch=master)](https://travis-ci.org/netguru-training/awesome-sauce)
+
 Are you a driver? Want to lower costs of travelling and you've got plenty of space left in you car?
 Find other people travelling to your destination place and let them chip in for fuel.
 
