@@ -1,4 +1,4 @@
-.ride
+.ride.clearfix
   .ride__description
     .ride__description-link
       = link_to 'Details', ride_path(ride.id)
@@ -19,11 +19,21 @@
         = link_to 'Edit', edit_ride_path(ride.driver.id)
         |
         = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
-  .ride__driver
-    Driver:
-    = link_to ride.driver.email, user_path(ride.driver.id)
     .ride__options-requests
       - if ride.author?(current_user)
         = link_to 'Display requests', ride_requests_path(ride)
       - if request_ride_allowed?(ride)
         = link_to 'Request a ride', ride_requests_path(ride), method: :post
+  .ride__driver
+    .ride__driver-image
+      = image_tag(current_user.avatar.url(:thumb))
+    .ride__driver-description
+      %div
+        Email:
+        = link_to ride.driver.email, user_path(ride.driver.id)
+      %div
+        Name:
+        = ride.driver.name
+      %div
+        Average rating:
+        = ride.driver.average_rating
