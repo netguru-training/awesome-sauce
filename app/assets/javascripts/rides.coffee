@@ -32,3 +32,5 @@ $ ->
     afterRoute: (distance) ->
       $("#km").text ": " + (distance / 1000) + "km"
   ).Load()
+
+  $('#datetimepicker1').datetimepicker(language: 'pt-BR')
