@@ -33,9 +33,8 @@ class RidesController < ApplicationController
   end
 
   def authenticate_author!
-    unless ride.author?(current_user)
-      flash[:error] = "You can delete only your rides."
-      redirect_to ride_path(ride.id)
-    end
+    return if ride.author?(current_user)
+    flash[:error] = "You can delete only your rides."
+    redirect_to ride_path(ride.id)
   end
 end

@@ -34,9 +34,8 @@ class RequestsController < ApplicationController
   private
 
   def authenticate_author!
-    unless ride.author?(current_user)
-      flash[:error] = "You can display only requests from your rides."
-      redirect_to ride_path(ride.id)
-    end
+    return if ride.author?(current_user)
+    flash[:error] = "You can display only requests from your rides."
+    redirect_to ride_path(ride.id)
   end
 end
