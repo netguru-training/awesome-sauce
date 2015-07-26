@@ -1,51 +1,12 @@
-Template App
+BlaBla Plus
 ================
-[![Build Status](https://travis-ci.org/netguru-training/awesome-sauce.svg?branch=master)](https://travis-ci.org/netguru-training/awesome-sauce)
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Are you a driver? Want to lower costs of travelling and you've got plenty of space left in you car?
+Find other people travelling to your destination place and let them chip in for fuel.
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+Are you a traveller? You don't own a car or a driving license?
+Find driver who is travelling same way and chip in for fuel.
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
-
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
-
-Ruby on Rails
--------------
-
-This application requires:
-
-- Ruby 2.2.0
-- Rails 4.2.0
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
+BlaBla Plus connects drivers with potential passengers to reduce costs of travelling.
+Log in, register your trip and let other users join you.
+Or, if you feel like not moving your car today, log in and search for drivers going same way.
