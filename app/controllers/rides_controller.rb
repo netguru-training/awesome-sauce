@@ -4,6 +4,15 @@ class RidesController < ApplicationController
   expose(:ride, attributes: :ride_params)
   expose(:rides)
   expose_decorated(:other_rides, decorator: RideDecorator) { Ride.other_users_rides(current_user) }
+  expose(:filtered_rides, decorator: RideDecorator) do
+    if params[:from].present? || params[:to].present?
+      filtered_rides = Ride.start_city(params[:from]).destination_city(params[:to])
+      flash[:info] = "No rides found" if filtered_rides.empty?
+      filtered_rides
+    else
+      other_rides
+    end
+  end
 
   def create
     ride.driver = current_user

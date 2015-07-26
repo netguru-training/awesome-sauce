@@ -1,7 +1,16 @@
+.row
+  .col-md-6
+    =form_tag("/rides", method: "get") do
+      =label_tag(:from, "Start city")
+      =text_field_tag(:from)
+      =label_tag(:to, "Destination city")
+      =text_field_tag(:to)
+      =submit_tag("Search")
+
 .rides
   .rides__title
     Rides
-  - other_rides.each do |other_ride|
+  - filtered_rides.each do |other_ride|
     = render 'rides/ride', ride: other_ride
 - if current_user.present?
   = link_to 'New ride', new_ride_path

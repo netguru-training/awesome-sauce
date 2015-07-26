@@ -15,6 +15,9 @@ class Ride < ActiveRecord::Base
   scope :completed, -> { where("start_date <= ?", Time.now) }
   scope :upcoming, -> { where("start_date > ?", Time.now) }
 
+  scope :start_city, ->(query) { where("start_city ilike ?", "%#{query}%") }
+  scope :destination_city, ->(query) { where("destination_city ilike ?", "%#{query}%") }
+
   scope :with_accepted_requests, -> { where(rides_passengers: { status: RidesPassenger.statuses[:accepted]}) }
   def free_rides_count
     seats - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
