@@ -20,45 +20,49 @@ ride = Ride.create(
   start_city: 'Tomaszów',
   destination_city: 'Warszawa',
   seats: 5,
-  start_date: Time.now + 2.days,
-  driver: users.at(1)
+  start_date: Time.now - 2.days,
+  driver: users.at(1),
+  price: 20
 )
 
-RidesPassenger.create(passenger: users.at(2), ride: ride)
-RidesPassenger.create(passenger: users.at(3), ride: ride)
-RidesPassenger.create(passenger: users.at(4), ride: ride)
+RidesPassenger.create(passenger: users.at(2), ride: ride, status: :pending)
+RidesPassenger.create(passenger: users.at(3), ride: ride, status: :accepted)
+RidesPassenger.create(passenger: users.at(4), ride: ride, status: :accepted)
 
 ride = Ride.create(
   start_city: 'Warszawa',
   destination_city: 'Gdańsk',
   seats: 5,
-  start_date: Time.now + 3.days,
-  driver: users.at(0)
+  start_date: Time.now - 3.days,
+  driver: users.at(0),
+  price: 30
 )
 
-RidesPassenger.create(passenger: users.at(2), ride: ride)
+RidesPassenger.create(passenger: users.at(2), ride: ride, status: :pending)
 
 ride = Ride.create(
   start_city: 'Warszawa',
   destination_city: 'Kraków',
   seats: 5,
-  start_date: Time.now + 3.days,
-  driver: users.at(1)
+  start_date: Time.now - 3.days,
+  driver: users.at(1),
+  price: 15
 )
 
-RidesPassenger.create(passenger: users.at(3), ride: ride)
-RidesPassenger.create(passenger: users.at(4), ride: ride)
+RidesPassenger.create(passenger: users.at(3), ride: ride, status: :rejected)
+RidesPassenger.create(passenger: users.at(4), ride: ride, status: :accepted)
 
 ride = Ride.create(
   start_city: 'Wrocław',
   destination_city: 'Poznań',
   seats: 5,
-  start_date: Time.now + 4.days,
-  driver: users.at(4)
+  start_date: Time.now - 4.days,
+  driver: users.at(4),
+  price: 25
 )
 
-RidesPassenger.create(passenger: users.at(1), ride: ride)
-RidesPassenger.create(passenger: users.at(2), ride: ride)
+RidesPassenger.create(passenger: users.at(1), ride: ride, status: :accepted)
+RidesPassenger.create(passenger: users.at(2), ride: ride, status: :accepted)
 
 Review.create(author: users.at(2), user: users.at(1), rating: 5,
               content: "Super ekstra!")
