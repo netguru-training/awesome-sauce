@@ -10,6 +10,7 @@ gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'paperclip', '~> 4.1'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'byebug'
