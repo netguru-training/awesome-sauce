@@ -1,18 +1,17 @@
-.row
+.row{style: 'margin-top: 10px;'}
   .col-md-6
     =form_tag("/rides", method: "get") do
       =label_tag(:from, "Start city")
       =text_field_tag(:from)
       =label_tag(:to, "Destination city")
       =text_field_tag(:to)
-      =submit_tag("Search")
+      =submit_tag "Search", class: 'btn btn-primary btn-xs'
 
 .rides
   .rides__title
     Rides
+  .rides__new
+    = link_to '+ New ride', new_ride_path, class: 'btn btn-primary'
   - filtered_rides.each do |other_ride|
     - if current_user.present?
-      .rides__new
-        = link_to '+ New ride', new_ride_path, class: 'btn btn-primary'
-    - other_rides.each do |other_ride|
       = render 'rides/ride', ride: other_ride
