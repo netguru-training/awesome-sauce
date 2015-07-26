@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+
+  def completed_rides_as_passenger
+    rides_as_passenger.completed.with_accepted_requests
+  end
+
   def average_rating
     if reviews_received.any?
       reviews_received.average(:rating).round(2)
