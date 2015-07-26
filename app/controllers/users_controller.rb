@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :owner_or_admin?, only: [:edit, :update, :destroy]
 
-  expose(:user)
+  expose_decorated(:user)
   expose(:users)
 
   def index

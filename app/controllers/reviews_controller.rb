@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   expose(:review, attributes: :review_params)
+  expose(:user) { User.find(params[:user_id]) }
 
   def create
     review.author = current_user
     if review.save
       flash[:notice] = "Review created."
-      ## redirect_to sciezka usera.....
-      redirect_to root_path
+      redirect_to current_user
     else
       render action: 'new'
     end
@@ -15,8 +15,7 @@ class ReviewsController < ApplicationController
   def update
     if review.save
       flash[:notice] = "Review updated."
-      ## redirect_to sciezka usera.....
-      redirect_to root_path
+      redirect_to current_user
     else
       render action: 'edit'
     end
