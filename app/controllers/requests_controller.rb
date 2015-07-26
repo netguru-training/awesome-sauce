@@ -24,12 +24,12 @@ class RequestsController < ApplicationController
     case params[:type]
     when 'accept'
       flash[:notice] = "Ride accepted"
-      rides_passenger.update_attributes(status: 2)
+      rides_passenger.update_attributes(status: RidesPassenger.statuses[:accepted])
     when 'deny'
       flash[:notice] = "Ride denied"
-      rides_passenger.update_attributes(status: -1)
+      rides_passenger.update_attributes(status: RidesPassenger.statuses[:rejected])
     end
-    redirect_to rides_path
+    redirect_to ride_requests_path
   end
 
   private

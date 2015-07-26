@@ -5,6 +5,7 @@
     %th date
   - rides.each do |ride|
     %tr
-      %td= ride.start_city
+      %td
+        = link_to ride.start_city, ride_path(ride)
       %td= ride.destination_city
       %td= ride.start_date.to_formatted_s(:short)
