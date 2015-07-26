@@ -6,7 +6,7 @@
     %th date
   - reviews_given.each do |review|
     %tr
-      %td= review.user.name
+      %td= link_to review.user.name, review.user
       %td= review.content
       %td= review.rating
       %td= review.created_at.to_formatted_s(:short)
