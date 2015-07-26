@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
   has_many :rides_as_passenger, class_name: 'Ride', through: :rides_passengers,
             source: 'ride'
@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
   has_many :reviews_given, class_name: "Review", :foreign_key => "author_id"
   has_many :reviews_received, class_name: "Review", :foreign_key => "user_id"
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing-avatar.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100#" },
+                    default_url: "/images/:style/missing-avatar.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true
 
