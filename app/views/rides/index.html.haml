@@ -11,6 +11,8 @@
   .rides__title
     Rides
   - filtered_rides.each do |other_ride|
-    = render 'rides/ride', ride: other_ride
-- if current_user.present?
-  = link_to 'New ride', new_ride_path
+    - if current_user.present?
+      .rides__new
+        = link_to '+ New ride', new_ride_path, class: 'btn btn-primary'
+    - other_rides.each do |other_ride|
+      = render 'rides/ride', ride: other_ride

@@ -1,8 +1,8 @@
 class RidesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :authenticate_author!, only: [:edit, :update, :destroy]
-  expose(:ride, attributes: :ride_params)
-  expose(:rides)
+  expose_decorated(:ride, attributes: :ride_params, decorator: RideDecorator)
+  expose_decorated(:rides, decorator: RideDecorator)
   expose_decorated(:other_rides, decorator: RideDecorator) { Ride.other_users_rides(current_user) }
   expose_decorated(:filtered_rides, decorator: RideDecorator) do
     if params[:from].present? || params[:to].present?

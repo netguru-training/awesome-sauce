@@ -2,16 +2,23 @@
   border-top: 1px solid $aluminum;
   padding: 10px 0;
 
-
   &:last-child {
     border-bottom: 1px solid $aluminum;
   }
 }
 
 .rides__title {
+  display: inline-block;
   font-size: $big;
   font-weight: bold;
   padding: 16px 0;
+}
+
+.ride__request,
+.rides__new {
+  display: inline-block;
+  float: right;
+  padding: 23px 0;
 }
 
 .ride__description {
@@ -32,6 +39,24 @@
 
 .ride__description-field {
   display: block;
+}
+
+.ride__description-field--show {
+  display: inline-block;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid $aluminum;
+
+  &.last {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: 0;
+  }
+}
+
+.ride__description-field--status {
+  margin-top: 10px;
+  display: inline-block;
 }
 
 .ride__driver-field--label,

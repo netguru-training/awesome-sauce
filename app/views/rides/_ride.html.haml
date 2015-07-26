@@ -24,6 +24,12 @@
           ( time to ride:
           = timeago_tag ride.start_date, nojs: true
           )
+    - if ride.requested?(current_user)
+      .ride__description-field
+        .ride__description-field--label
+          status:
+        .ride__description-field--value
+          = ride.rides_passengers_status(current_user)
     .ride__description-link
       = link_to 'Details', ride_path(ride.id)
     .ride__options

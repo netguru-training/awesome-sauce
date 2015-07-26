@@ -5,9 +5,9 @@
     %title= content_for?(:title) ? yield(:title) : 'BlaBla Plus'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BlaBla Plus'}"}
     = stylesheet_link_tag 'application', media: 'all'
+    %script{src: "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places"}
     = javascript_include_tag 'application'
     = csrf_meta_tags
-    %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"}
   %body
     %header
       = render 'layouts/navigation'

@@ -1,32 +1,62 @@
+.ride__request
+  - if request_ride_allowed?(ride)
+    = link_to 'Request a ride', ride_requests_path(ride), method: :post, class: 'btn btn-primary btn-sm'
+  - if ride.author?(current_user)
+    = link_to 'Display requests', ride_requests_path(ride), class: 'btn btn-primary btn-sm'
+  - if ride.requested?(current_user)
+    .ride__description-field--status
+      .ride__description-field--label
+        status:
+      .ride__description-field--value
+        = ride.rides_passengers_status(current_user)
 .rides__title
   Ride
-.ride
+.ride.clearfix
   .ride__description
-    .ride__description-to
-      To:
-      = ride.destination_city
-    .ride__description-from
-      From:
-      = ride.start_city
-    .ride__description-seats
-      Free seats:
-      = ride.free_rides_count
-    .ride__description-start-date
-      Start date:
-      = ride.start_date
-    .ride__description-driver
-      Driver:
-      = link_to ride.driver.email, user_path(ride.driver.id)
+    .ride__description-field--show
+      .ride__description-field--label
+        To:
+      .ride__description-field--value
+        = ride.destination_city
+    .ride__description-field--show
+      .ride__description-field--label
+        From:
+      .ride__description-field--value
+        = ride.start_city
+    .ride__description-field--show
+      .ride__description-field--label
+        Free seats:
+      .ride__description-field--value
+        = ride.free_rides_count
+    .ride__description-field--show.last
+      .ride__description-field--label
+        Start date:
+      .ride__description-field--value
+        = ride.my_start_date
+        .ride__description-field--value-details
+          ( time to ride:
+          = timeago_tag ride.start_date, nojs: true
+          )
     .ride__options
       - if ride.author?(current_user)
         = link_to 'Edit', edit_ride_path(ride.driver.id)
         |
         = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
   .ride__driver
-    Driver:
-    = link_to ride.driver.email, user_path(ride.driver.id)
-    .ride__options-requests
-      - if ride.author?(current_user)
-        = link_to 'Display requests', ride_requests_path(ride)
-      - if !ride.author?(current_user) && ride.free_rides? && !ride.requested?(current_user)
-        = link_to 'Request a ride', new_ride_request_path(ride)
+    .ride__driver-image
+      = image_tag(ride.driver.avatar.url(:thumb))
+    .ride__driver-field
+      .ride__driver-field--label
+        Email:
+      .ride__driver-field--value
+        = link_to ride.driver.email, user_path(ride.driver.id)
+    .ride__driver-field
+      .ride__driver-field--label
+        Name:
+      .ride__driver-field--value
+        = ride.driver.name
+    .ride__driver-field
+      .ride__driver-field--label
+        Average rating:
+      .ride__driver-field--value
+        = ride.driver.average_rating

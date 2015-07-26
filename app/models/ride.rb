@@ -39,4 +39,8 @@ class Ride < ActiveRecord::Base
   def accepted_requests
     rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
+
+  def rides_passengers_status(current_user)
+    rides_passengers.find_by(passenger_id: current_user.id).status if current_user.present?
+  end
 end
