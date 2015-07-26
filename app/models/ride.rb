@@ -9,8 +9,8 @@ class Ride < ActiveRecord::Base
   validates :start_date, presence: true
   validates :driver_id,  presence: true
 
-  scope :completed, -> { where("start_date <= ?", Time.now)}
-  scope :upcoming, -> { where("start_date > ?", Time.now)}
+  scope :completed, -> { where("start_date <= ?", Time.now) }
+  scope :upcoming, -> { where("start_date > ?", Time.now) }
 
   def free_rides_count
     places - rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
