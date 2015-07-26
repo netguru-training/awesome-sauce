@@ -2,8 +2,8 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Template App'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Template App'}"}
+    %title= content_for?(:title) ? yield(:title) : 'BlaBla Plus'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BlaBla Plus'}"}
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -14,7 +14,7 @@
     %nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
-          = link_to "BlaBlaPlus", root_path, class: "navbar-brand"
+          = link_to "BlaBla Plus", root_path, class: "navbar-brand"
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
             - if current_user
