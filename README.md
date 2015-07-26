@@ -13,5 +13,6 @@ BlaBla Plus connects drivers with potential passengers to reduce costs of travel
 Log in, register your trip and let other users join you.
 Or, if you feel like not moving your car today, log in and search for drivers going same way.
 
-!!! IMPORTANT !!!
+######IMPORTANT
+
 Any resemblance to names and/or trademarks of real companies, operating or not, is purely coincidental.
