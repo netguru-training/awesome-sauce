@@ -5,8 +5,9 @@
     %th Date
     - if current_user == user
       %th Review
-  %tr
-    - rides.each do |ride|
+
+  - rides.each do |ride|
+    %tr
       %td= link_to ride.start_city, ride_path(ride)
       %td= ride.destination_city
       %td= ride.start_date.to_formatted_s(:short)

@@ -37,6 +37,6 @@ class Ride < ActiveRecord::Base
   end
 
   def accepted_requests
-      rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
+    rides_passengers.where(status: RidesPassenger.statuses[:accepted]).count
   end
 end
