@@ -1,40 +1,54 @@
 .ride.clearfix
   .ride__description
+    .ride__description-field
+      .ride__description-field--label
+        To:
+      .ride__description-field--value
+        = ride.destination_city
+    .ride__description-field
+      .ride__description-field--label
+        From:
+      .ride__description-field--value
+        = ride.start_city
+    .ride__description-field
+      .ride__description-field--label
+        Free seats:
+      .ride__description-field--value
+        = ride.free_rides_count
+    .ride__description-field
+      .ride__description-field--label
+        Start date:
+      .ride__description-field--value
+        = ride.my_start_date
+        .ride__description-field--value-details
+          ( time to ride:
+          = timeago_tag ride.start_date, nojs: true
+          )
     .ride__description-link
       = link_to 'Details', ride_path(ride.id)
-    .ride__description-to
-      To:
-      = ride.destination_city
-    .ride__description-from
-      From:
-      = ride.start_city
-    .ride__description-seats
-      Free seats:
-      = ride.free_rides_count
-    .ride__description-start-date
-      Start date:
-      = ride.start_date
     .ride__options
       - if ride.author?(current_user)
         = link_to 'Edit', edit_ride_path(ride.driver.id)
         |
         = link_to 'Delete', ride, method: :delete, data: { confirm: "You sure?" }
     .ride__options-requests
-      - if ride.author?(current_user)
-        = link_to 'Display requests', ride_requests_path(ride)
       - if request_ride_allowed?(ride)
-        = link_to 'Request a ride', ride_requests_path(ride), method: :post
+        = link_to 'Request a ride', ride_requests_path(ride), method: :post, class: 'btn btn-default btn-xs'
   .ride__driver
     .ride__driver-image
-      - if signed_in?
-        = image_tag(current_user.avatar.url(:thumb))
-    .ride__driver-description
-      %div
+      = image_tag(ride.driver.avatar.url(:thumb))
+    .ride__driver-field
+      .ride__driver-field--label
         Email:
+      .ride__driver-field--value
         = link_to ride.driver.email, user_path(ride.driver.id)
-      %div
+    .ride__driver-field
+      .ride__driver-field--label
         Name:
+      .ride__driver-field--value
         = ride.driver.name
-      %div
+    .ride__driver-field
+      .ride__driver-field--label
         Average rating:
+      .ride__driver-field--value
         = ride.driver.average_rating

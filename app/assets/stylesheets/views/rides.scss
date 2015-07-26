@@ -1,15 +1,15 @@
 .ride {
-  border-top: 1px solid $black;
-  padding: 8px 0;
+  border-top: 1px solid $aluminum;
+  padding: 10px 0;
 
 
   &:last-child {
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid $aluminum;
   }
 }
 
 .rides__title {
-  font-size: 30px;
+  font-size: $big;
   font-weight: bold;
   padding: 16px 0;
 }
@@ -28,4 +28,36 @@
     margin: 5px;
     height: 50px;
   }
+}
+
+.ride__description-field {
+  display: block;
+}
+
+.ride__driver-field--label,
+.ride__description-field--label {
+  display: inline-block;
+  font-size: $smallest;
+  color: $light-gray;
+  text-transform: uppercase;
+}
+
+.ride__driver-field--value,
+.ride__description-field--value {
+  padding-left: 8px;
+  display: inline-block;
+}
+
+.ride__description-link {
+  display: inline-block;
+  font-size: $smallest;
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.ride__description-field--value-details {
+  display: inline-block;
+  font-size: $smallest;
+  color: $aluminum;
 }

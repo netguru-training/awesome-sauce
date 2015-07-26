@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery-geocomplete
+//= require jquery.timeago
 //= require reviews
 //= require_tree .
