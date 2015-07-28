@@ -3,7 +3,7 @@ class RidesController < ApplicationController
   before_action :authenticate_author!, only: [:edit, :update, :destroy]
   expose_decorated(:ride, attributes: :ride_params, decorator: RideDecorator)
   expose_decorated(:rides, decorator: RideDecorator)
-  expose_decorated(:other_rides, decorator: RideDecorator) { Ride.other_users_rides(current_user) }
+  expose_decorated(:other_rides, decorator: RideDecorator) { Ride.other_users_rides(current_user).upcoming }
   expose_decorated(:filtered_rides, decorator: RideDecorator) do
     if params[:from].present? || params[:to].present?
       filtered_rides = Ride.start_city(params[:from]).destination_city(params[:to])

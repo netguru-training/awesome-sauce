@@ -16,11 +16,15 @@ users = 5.times.collect do |i|
   )
 end
 
-ride = Ride.create(
+ride = Ride.create!(
   start_city: 'Tomaszów',
+  start_city_lat: '51.5311945',
+  start_city_lng: '20.008647099999962',
   destination_city: 'Warszawa',
+  destination_city_lat: '52.2296756',
+  destination_city_lng: '21.012228700000037',
   seats: 5,
-  start_date: Time.now - 2.days,
+  start_date: Time.now + 2.days,
   driver: users.at(1),
   price: 20
 )
@@ -31,7 +35,24 @@ RidesPassenger.create(passenger: users.at(4), ride: ride, status: :accepted)
 
 ride = Ride.create(
   start_city: 'Warszawa',
+  start_city_lat: "52.2296756",
+  start_city_lng: "21.012228700000037",
   destination_city: 'Gdańsk',
+  destination_city_lat: "54.35202520000001",
+  destination_city_lng: "18.64663840000003",
+  seats: 5,
+  start_date: Time.now + 3.days,
+  driver: users.at(0),
+  price: 30
+)
+
+ride = Ride.create(
+  start_city: 'Warszawa',
+  start_city_lat: "52.2296756",
+  start_city_lng: "21.012228700000037",
+  destination_city: 'Gdańsk',
+  destination_city_lat: "54.35202520000001",
+  destination_city_lng: "18.64663840000003",
   seats: 5,
   start_date: Time.now - 3.days,
   driver: users.at(0),
@@ -42,19 +63,52 @@ RidesPassenger.create(passenger: users.at(2), ride: ride, status: :pending)
 
 ride = Ride.create(
   start_city: 'Warszawa',
+  start_city_lat: "52.2296756",
+  start_city_lng: "21.012228700000037",
   destination_city: 'Kraków',
+  destination_city_lat: "50.06465009999999",
+  destination_city_lng: "19.94497990000002",
+  seats: 5,
+  start_date: Time.now + 3.days,
+  driver: users.at(1),
+  price: 15
+)
+
+ride = Ride.create(
+  start_city: 'Warszawa',
+  start_city_lat: "52.2296756",
+  start_city_lng: "21.012228700000037",
+  destination_city: 'Kraków',
+  destination_city_lat: "50.06465009999999",
+  destination_city_lng: "19.94497990000002",
   seats: 5,
   start_date: Time.now - 3.days,
   driver: users.at(1),
   price: 15
 )
-
 RidesPassenger.create(passenger: users.at(3), ride: ride, status: :rejected)
 RidesPassenger.create(passenger: users.at(4), ride: ride, status: :accepted)
 
 ride = Ride.create(
   start_city: 'Wrocław',
+  start_city_lat: "51.1078852",
+  start_city_lng: "17.03853760000004",
   destination_city: 'Poznań',
+  destination_city_lat: "52.406374",
+  destination_city_lng: "16.925168100000064",
+  seats: 5,
+  start_date: Time.now + 4.days,
+  driver: users.at(4),
+  price: 25
+)
+
+ride = Ride.create(
+  start_city: 'Wrocław',
+  start_city_lat: "51.1078852",
+  start_city_lng: "17.03853760000004",
+  destination_city: 'Poznań',
+  destination_city_lat: "52.406374",
+  destination_city_lng: "16.925168100000064",
   seats: 5,
   start_date: Time.now - 4.days,
   driver: users.at(4),
